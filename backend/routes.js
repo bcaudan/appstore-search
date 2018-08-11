@@ -1,17 +1,29 @@
+const {
+  parsePathParameter,
+  parseBody,
+  sendNotFound,
+  sendClientError,
+  sendNoContent,
+  sendServerError,
+  sendResourceCreated
+} = require('./httpUtils');
 const { add, remove } = require('./index');
 
 const routes = (request, response) => {
-  if (request.method === 'POST' && request.url === '/api/1/apps') {
-    // parse body
-    // add
-    // response 201 + id
-  } else if (request.method === 'DELETE' && request.url.test('^/api/1/apps/[\d]+$')) {
-    // parse id
-    // delete
-    // response 204 or api result
+  const deleteRoute = /^\/api\/1\/apps\/([\d]+)$/;
+  if (request.method === 'DELETE' && deleteRoute.test(request.url)) {
+    parsePathParameter(request, deleteRoute)
+      .then(appId => remove(appId))
+      .then(sendNoContent(response))
+      .catch(sendServerError(response));
+  } else if (request.method === 'POST' && request.url === '/api/1/apps') {
+    parseBody(request)
+      .catch(sendClientError(response))
+      .then(app => add(app))
+      .then(sendResourceCreated(response))
+      .catch(sendServerError(response));
   } else {
-    response.statusCode = 404;
-    response.end('Not found');
+    sendNotFound(response)();
   }
 };
 

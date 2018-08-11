@@ -1,5 +1,17 @@
 # appstore-search
 
+## Getting started
+
+Run server:
+
+  ALGOLIA_ADMIN_KEY=xxx npm run start
+
+## Development
+
+Launch server with automatic restart on changes:
+
+  ALGOLIA_ADMIN_KEY=xxx npm run dev
+
 ## References
 ### Inferno
 

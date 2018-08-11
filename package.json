@@ -4,6 +4,8 @@
   "description": "Appstore search",
   "main": "index.js",
   "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/bcaudan/appstore-search/issues"
   },
-  "homepage": "https://github.com/bcaudan/appstore-search#readme"
+  "homepage": "https://github.com/bcaudan/appstore-search#readme",
+  "dependencies": {
+    "algoliasearch": "3.30.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.3"
+  }
 }
