@@ -1,0 +1,19 @@
+{
+  "name": "appstore-search",
+  "version": "1.0.0",
+  "description": "Appstore search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcaudan/appstore-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bcaudan/appstore-search/issues"
+  },
+  "homepage": "https://github.com/bcaudan/appstore-search#readme"
+}
