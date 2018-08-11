@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
+    "start:test": "NODE_ENV=TEST npm run start",
     "dev": "nodemon backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm-run-all -r -p start:test test:backend",
+    "test:backend": "npm-run-all wait-test-server-up mocha",
+    "mocha": "mocha --timeout 10000 backend/server.spec.js",
+    "wait-test-server-up": "until curl -s http://localhost:1234/healthcheck > /dev/null; do sleep 1; done"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,9 @@
     "algoliasearch": "3.30.0"
   },
   "devDependencies": {
-    "nodemon": "1.18.3"
+    "chakram": "1.5.0",
+    "mocha": "5.2.0",
+    "nodemon": "1.18.3",
+    "npm-run-all": "4.1.3"
   }
 }

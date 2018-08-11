@@ -1,6 +1,7 @@
 const algoliasearch = require('algoliasearch');
-const client = algoliasearch('EYVD6N6UFE', process.env.ALGOLIA_ADMIN_KEY);
-const index = client.initIndex('appstore-search');
+const { applicationId, adminKey, indexName } = require('../config/config');
+const client = algoliasearch(applicationId, adminKey);
+const index = client.initIndex(indexName);
 
 /**
  * Add an app to the Algolia apps index and return its id

@@ -1,7 +1,7 @@
 const http = require('http');
 
-const routes = require('./routes');
-const port = 3000;
+const routes = require('./routes/routes');
+const { port } = require('./config/config');
 
 const server = http.createServer(routes);
 

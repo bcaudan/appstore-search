@@ -24,18 +24,10 @@ function parsePathParameter(request, routeDefinition) {
   })
 }
 
-function sendClientError(response) {
-  return error => {
-    response.statusCode = 400;
-    response.end(error);
-  }
-}
-
-function sendServerError(response) {
-  return error => {
-    console.log(error);
-    response.statusCode = 500;
-    response.end('Server error');
+function sendOK(response) {
+  return () => {
+    response.statusCode = 200;
+    response.end('OK');
   }
 }
 
@@ -53,10 +45,25 @@ function sendNoContent(response) {
   }
 }
 
+function sendClientError(response) {
+  return error => {
+    response.statusCode = 400;
+    response.end(error);
+  }
+}
+
 function sendNotFound(response) {
   return () => {
     response.statusCode = 404;
     response.end('Not found');
+  }
+}
+
+function sendServerError(response) {
+  return error => {
+    console.log(error);
+    response.statusCode = 500;
+    response.end('Server error');
   }
 }
 
@@ -66,6 +73,7 @@ module.exports = {
   sendNotFound,
   sendClientError,
   sendNoContent,
+  sendOK,
   sendServerError,
   sendResourceCreated
 };
