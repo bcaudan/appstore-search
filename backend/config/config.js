@@ -1,5 +1,5 @@
 const config = {
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 4000,
   indexName: 'appstore-search',
   applicationId: 'EYVD6N6UFE',
   adminKey: process.env.ALGOLIA_ADMIN_KEY

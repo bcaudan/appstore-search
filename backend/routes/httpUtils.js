@@ -35,19 +35,6 @@ function sendOK(response) {
   }
 }
 
-function sendIndex(response) {
-  return () => {
-    fs.readFile(INDEX_PATH, function(error, content) {
-      if (error) {
-        console.log(error);
-        return sendServerError(response)();
-      }
-      response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.end(content, 'utf-8');
-    });
-  }
-}
-
 function sendResourceCreated(response) {
   return object => {
     response.statusCode = 201;
@@ -91,7 +78,6 @@ module.exports = {
   sendClientError,
   sendNoContent,
   sendOK,
-  sendIndex,
   sendServerError,
   sendResourceCreated
 };
