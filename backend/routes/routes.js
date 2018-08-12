@@ -5,7 +5,6 @@ const {
   sendClientError,
   sendNoContent,
   sendOK,
-  sendIndex,
   sendServerError,
   sendResourceCreated,
 } = require('./httpUtils');
@@ -30,8 +29,6 @@ const routes = (request, response) => {
       .catch(sendClientError(response))
   } else if (request.method === 'GET' && request.url === '/healthcheck') {
     sendOK(response)();
-  } else if (request.method === 'GET' && request.url === '/') {
-    sendIndex(response)();
   } else {
     sendNotFound(response)();
   }
