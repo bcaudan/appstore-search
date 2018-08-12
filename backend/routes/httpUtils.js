@@ -1,3 +1,7 @@
+const fs = require('fs');
+
+const INDEX_PATH = './index.html';
+
 function parseBody(request) {
   return new Promise((resolve, reject) => {
     let rawBody = '';
@@ -28,6 +32,19 @@ function sendOK(response) {
   return () => {
     response.statusCode = 200;
     response.end('OK');
+  }
+}
+
+function sendIndex(response) {
+  return () => {
+    fs.readFile(INDEX_PATH, function(error, content) {
+      if (error) {
+        console.log(error);
+        return sendServerError(response)();
+      }
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.end(content, 'utf-8');
+    });
   }
 }
 
@@ -74,6 +91,7 @@ module.exports = {
   sendClientError,
   sendNoContent,
   sendOK,
+  sendIndex,
   sendServerError,
   sendResourceCreated
 };
