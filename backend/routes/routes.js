@@ -8,8 +8,8 @@ const {
   sendServerError,
   sendResourceCreated,
 } = require('./httpUtils');
-const { validateApp, validateAppId } = require('./validators');
-const { add, remove } = require('../domain/index');
+const { validateApp, validateAppId } = require('../domain/validators');
+const { add, remove } = require('../domain/applications');
 
 const routes = (request, response) => {
   const deleteRoute = /^\/api\/1\/apps\/(.*)$/;
