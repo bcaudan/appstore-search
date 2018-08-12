@@ -1,16 +1,25 @@
 # appstore-search
 
+## Live instance
+
+https://bcaudan-appstore-search.herokuapp.com/
+
+### Index Management
+
+    POST https://bcaudan-appstore-search.herokuapp.com/api/1/apps {app}
+    DELETE https://bcaudan-appstore-search.herokuapp.com/api/1/apps/app-id
+
 ## Getting started
 
 Run server:
 
-  ALGOLIA_ADMIN_KEY=xxx npm run start
+    ALGOLIA_ADMIN_KEY=xxx npm run start
 
 ## Development
 
 Launch server with automatic restart on changes:
 
-  ALGOLIA_ADMIN_KEY=xxx npm run dev
+    ALGOLIA_ADMIN_KEY=xxx npm run dev
 
 ## References
 ### Inferno
