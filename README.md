@@ -1,25 +1,48 @@
 # appstore-search
 
-## Live instance
+## Live instances
+
+### Frontend
 
 https://bcaudan-appstore-search.herokuapp.com/
 
-### Index Management
+### Backend
 
     POST https://bcaudan-appstore-search.herokuapp.com/api/1/apps {app}
     DELETE https://bcaudan-appstore-search.herokuapp.com/api/1/apps/app-id
 
-## Getting started
+## Local
 
-Run server:
+### Frontend
 
-    ALGOLIA_ADMIN_KEY=xxx npm run start
+    npm run frontend
+    
+available on http://localhost:5000    
+
+
+### Backend
+
+    ALGOLIA_ADMIN_KEY=xxx npm run backend
+    
+available on http://localhost:4000    
 
 ## Development
 
+### Frontend
+
 Launch server with automatic restart on changes:
 
-    ALGOLIA_ADMIN_KEY=xxx npm run dev
+    npm run dev:frontend
+
+open browser on http://localhost:3000
+
+### Backend
+
+Launch server with automatic restart on changes:
+
+    ALGOLIA_ADMIN_KEY=xxx npm run dev:backend
+
+available on http://localhost:4000
 
 ## References
 ### Inferno
