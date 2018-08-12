@@ -6,20 +6,20 @@ class Applications extends Component {
     super(props, context);
 
     this.state = {
-      results: '',
+      applications: '',
     };
 
     helper.on('result', (content) => {
       this.setState({
-        results: JSON.stringify(content.hits, null, 2)
-      })
+        applications: JSON.stringify(content.hits.map(application => application.name), null, 2),
+      });
     });
   }
 
   render() {
     return (
       <div className="applications">
-        {this.state.results}
+        {this.state.applications}
       </div>
     );
   }
