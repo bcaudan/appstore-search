@@ -1,0 +1,34 @@
+{
+  "name": "appstore-search",
+  "version": "1.0.0",
+  "description": "Appstore search",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "NODE_ENV=TEST npm-run-all -r -p start test:backend",
+    "test:backend": "npm-run-all clear-index wait-test-server-up mocha",
+    "mocha": "mocha --timeout 10000 backend/server.spec.js",
+    "clear-index": "node scripts/clearIndex.js",
+    "wait-test-server-up": "until curl -s http://localhost:1234/healthcheck > /dev/null; do sleep 1; done"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcaudan/appstore-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bcaudan/appstore-search/issues"
+  },
+  "homepage": "https://github.com/bcaudan/appstore-search#readme",
+  "dependencies": {
+    "algoliasearch": "3.30.0"
+  },
+  "devDependencies": {
+    "chakram": "1.5.0",
+    "mocha": "5.2.0",
+    "nodemon": "1.18.3",
+    "npm-run-all": "4.1.3"
+  }
+}
