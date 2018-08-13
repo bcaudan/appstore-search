@@ -15,7 +15,7 @@
     "test:frontend": "cd frontend && npm test",
     "test:backend": "NODE_ENV=TEST npm-run-all -r -p backend test:backend:run",
     "test:backend:run": "npm-run-all clear-index wait-test-server-up mocha",
-    "mocha": "mocha --timeout 10000 backend/server.spec.js",
+    "mocha": "mocha --timeout 30000 backend/server.spec.js",
     "clear-index": "node scripts/clearIndex.js",
     "wait-test-server-up": "until curl -s http://localhost:1234/healthcheck > /dev/null; do sleep 1; done"
   },
