@@ -7,7 +7,7 @@ class Categories extends Component {
 
     this.state = {
       categories: [],
-      selectedCategory: null
+      selectedCategory: null,
     };
 
     helper.on('result', (content) => {
@@ -17,22 +17,23 @@ class Categories extends Component {
     });
   }
 
-  // TODO find something idiomatic
-  toggleCategory(category) {
-    return (instance) => {
-      const selectedCategory = instance.state.selectedCategory === category ? null : category;
-      helper
-        .toggleFacetRefinement('category', category)
-        .search();
-      instance.setState({ selectedCategory: selectedCategory });
-    }
+  toggleCategory(instance, event) {
+    const category = event.target.dataset.category;
+    helper
+      .toggleFacetRefinement('category', category)
+      .search();
+    instance.setState(({selectedCategory: previousCategory}) => {
+      const selectedCategory = previousCategory === category ? null : category;
+      return { selectedCategory }
+    });
   }
 
   render() {
     return (
       <ul className="categories">
         {this.state.categories.map(category => (
-          <li key={category.name} onClick={ linkEvent(this, this.toggleCategory(category.name)) }>{category.name}</li>
+          <li key={category.name} data-category={category.name}
+              onClick={linkEvent(this, this.toggleCategory)}>{category.name}</li>
         ))}
       </ul>
     );

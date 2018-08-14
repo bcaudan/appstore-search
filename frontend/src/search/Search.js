@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component, linkEvent } from 'inferno';
 import helper from '../database/helper';
 
 class Search extends Component {
@@ -8,19 +8,21 @@ class Search extends Component {
     this.state = {
       value: '',
     };
-
-    this.search = this.search.bind(this);
   }
 
   componentDidMount() {
-    this.search();
+    this.search(this.state.value);
   }
 
-  search(event) {
-    const value = event ? event.target.value : '';
-    this.setState({value: value});
+  search(value) {
     helper.setQuery(value)
           .search();
+  };
+
+  onSearchValueChange(instance, event) {
+    const { value } = event.target;
+    instance.setState({ value });
+    instance.search(value);
   }
 
   render() {
@@ -28,7 +30,7 @@ class Search extends Component {
       <div className="search">
         <input type="text" autoComplete="off" id="search-box"
                value={this.state.value}
-               onInput={this.search}
+               onInput={linkEvent(this, this.onSearchValueChange)}
                placeholder="Search for applications"
         />
       </div>
