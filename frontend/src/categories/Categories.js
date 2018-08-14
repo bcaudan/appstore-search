@@ -33,7 +33,7 @@ class Categories extends Component {
       <ul className="categories">
         {this.state.categories.map(category => (
           <li key={category.name} data-category={category.name}
-              onClick={linkEvent(this, this.toggleCategory)}>{category.name}</li>
+              onClick={linkEvent(this, this.toggleCategory)}>{category.name} ({category.count})</li>
         ))}
       </ul>
     );
