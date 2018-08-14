@@ -1,8 +1,9 @@
 import { Component } from 'inferno';
 import './registerServiceWorker';
-import Categories from './categories/Categories';
-import Search from './search/Search';
-import Applications from './applications/Applications';
+import Categories from './components/Categories';
+import Search from './components/Search';
+import Sort from './components/Sort';
+import Applications from './components/Applications';
 import './App.css';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Search/>
         <Categories/>
+        <Sort/>
         <Applications/>
       </div>
     );
