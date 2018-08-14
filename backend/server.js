@@ -1,9 +1,9 @@
 const http = require('http');
 
-const routes = require('./routes/routes');
+const routesMatcher = require('./routes/routes');
 const { port } = require('./config/config');
 
-const server = http.createServer(routes);
+const server = http.createServer(routesMatcher);
 
 server.listen(port, (err) => {
   if (err) {
