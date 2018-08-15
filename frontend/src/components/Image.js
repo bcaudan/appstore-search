@@ -23,8 +23,8 @@ export default class Image extends Component {
   render() {
     return (
       <div>
-        <img src={'./spinner.gif'} width={'100%'} style={{ display: this.state.loaded ? 'none' : 'block' }}/>
-        <img src={this.state.src}  width={'100%'} style={{ display: this.state.loaded ? 'block' : 'none' }}
+        <img src={'./spinner.gif'} alt="" width={'100%'} style={{ display: this.state.loaded ? 'none' : 'block' }}/>
+        <img src={this.state.src}  alt="" width={'100%'} style={{ display: this.state.loaded ? 'block' : 'none' }}
              onError={linkEvent(this, this.onImageError)}
              onLoad={linkEvent(this, this.onImageLoaded)}/>
       </div>

@@ -1,4 +1,4 @@
-import {Component, linkEvent} from 'inferno';
+import {Component} from 'inferno';
 import Collapse from 'inferno-bootstrap/lib/Collapse';
 import ListGroup from 'inferno-bootstrap/lib/List/ListGroup';
 import ListGroupItem from 'inferno-bootstrap/lib/List/ListGroupItem';
