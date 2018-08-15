@@ -18,7 +18,7 @@ class App extends Component {
         <Search/>
         <Categories>
           <Container fluid={true} className={'no-gutters'}>
-            <Row>
+            <Row  className={'result-controls'}>
               <Col xs={12}>
                 <div className={'float-left'}>
                   <CategoriesToggle/>
