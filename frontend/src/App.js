@@ -1,5 +1,8 @@
 import { Component } from 'inferno';
 import './registerServiceWorker';
+import Col from 'inferno-bootstrap/lib/Col';
+import Container from 'inferno-bootstrap/lib/Container';
+import Row from 'inferno-bootstrap/lib/Row';
 import Categories from './components/Categories';
 import Search from './components/Search';
 import Sort from './components/Sort';
@@ -11,8 +14,16 @@ class App extends Component {
     return (
       <div className="App">
         <Search/>
-        <Categories/>
-        <Sort/>
+        <Container fluid={true} className={'no-gutters'}>
+          <Row>
+            <Col>
+              <Categories/>
+            </Col>
+            <Col xs={1}>
+              <Sort/>
+            </Col>
+          </Row>
+        </Container>
         <Applications/>
       </div>
     );

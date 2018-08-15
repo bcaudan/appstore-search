@@ -1,4 +1,8 @@
-import { Component, linkEvent } from 'inferno';
+import { Component } from 'inferno';
+import ButtonDropdown from 'inferno-bootstrap/lib/ButtonDropdown';
+import DropdownItem from 'inferno-bootstrap/lib/DropdownItem';
+import DropdownMenu from 'inferno-bootstrap/lib/DropdownMenu';
+import DropdownToggle from 'inferno-bootstrap/lib/DropdownToggle';
 import helper from '../database/helper';
 
 export default class Sort extends Component {
@@ -6,28 +10,35 @@ export default class Sort extends Component {
     super(props, context);
 
     this.state = {
-      sort: 'DESC',
+      sort: 'desc',
+      isOpen: false
     };
   }
 
-  onSortChange(instance) {
-    instance.setState(({sort: previousSort}) => {
-      const sort = instance.opposite(previousSort);
-      helper
-        .setIndex(sort === 'DESC' ? 'appstore-search' : 'appstore-search-rank-asc')
-        .search();
-      return {sort}
-    })
-  }
+  onSortChange = (event) => {
+    const sort = event.target.dataset.sort;
+    helper
+      .setIndex(sort === 'desc' ? 'appstore-search' : 'appstore-search-rank-asc')
+      .search();
+    this.setState({ sort });
+  };
 
-  opposite(sort) {
-    return sort === 'DESC' ? 'ASC' : 'DESC';
-  }
+  doToggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    })
+  };
 
   render() {
     return (
       <div>
-        <input type="button" value={`Sort ${this.opposite(this.state.sort)}`} onClick={linkEvent(this, this.onSortChange)}/>
+        <ButtonDropdown isOpen={this.state.isOpen} toggle={this.doToggle}>
+          <DropdownToggle caret>Sort</DropdownToggle>
+          <DropdownMenu className={"dropdown-menu-right"}>
+            <DropdownItem data-sort={'desc'} onClick={this.onSortChange}>Rank DESC</DropdownItem>
+            <DropdownItem data-sort={'asc'} onClick={this.onSortChange}>Rank ASC</DropdownItem>
+          </DropdownMenu>
+        </ButtonDropdown>
       </div>
     )
   }
