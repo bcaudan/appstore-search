@@ -1,3 +1,25 @@
 .App {
   text-align: center;
 }
+
+.App h4 {
+  font-size: 1em;
+}
+
+.App .card-body {
+  padding: 0;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.no-gutters .col,
+.no-gutters [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.result-controls {
+  margin: 0.3em;
+}

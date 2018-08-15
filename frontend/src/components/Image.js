@@ -1,4 +1,4 @@
-import { Component, linkEvent } from 'inferno';
+import {Component, linkEvent} from 'inferno';
 
 const fallbackImage = './image-not-found.png';
 
@@ -7,7 +7,8 @@ export default class Image extends Component {
     super(props, context);
 
     this.state = {
-      src: props.src ? props.src : fallbackImage
+      loaded: false,
+      src: props.src ? props.src : fallbackImage,
     }
   }
 
@@ -15,11 +16,19 @@ export default class Image extends Component {
     instance.setState({ src: fallbackImage })
   }
 
+  onImageLoaded(instance) {
+    instance.setState({ loaded: true })
+  }
+
   render() {
     return (
-      <img src={this.state.src} alt="not found"
-           width={175} height={175}
-           onError={linkEvent(this, this.onImageError)} />
-    );
+      <div>
+        <img src={'./spinner.gif'} alt="" width={'100%'} style={{ display: this.state.loaded ? 'none' : 'block' }}/>
+        <img src={this.state.src}  alt="" width={'100%'} style={{ display: this.state.loaded ? 'block' : 'none' }}
+             onError={linkEvent(this, this.onImageError)}
+             onLoad={linkEvent(this, this.onImageLoaded)}/>
+      </div>
+    )
+
   }
 }
