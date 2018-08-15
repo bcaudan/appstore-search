@@ -27,27 +27,34 @@ class Applications extends Component {
   render() {
     return (
       <div className="applications">
-        {this.state.applications.map(application =>
-          <Card key={application.objectID} className="application" style={{ minWidth: 525, maxHeight: 175 }}>
-            <a href={application.link} target={'_blank'} style={{ color: 'black' }}>
-              <Container fluid={true} className={'no-gutters'}>
-                <Row>
-                  <Col style={{maxWidth: 175}}>
-                    <Image src={application.image}/>
-                  </Col>
-                  <Col>
-                    <CardBody>
-                      <CardTitle><span dangerouslySetInnerHTML={{ __html: application.name }}/></CardTitle>
-                      <CardText>
-                        <span dangerouslySetInnerHTML={{ __html: `${application.category} #${application.rank}` }}/>
-                      </CardText>
-                    </CardBody>
-                  </Col>
-                </Row>
-              </Container>
-            </a>
-          </Card>,
-        )}
+        <Container fluid={true} className={'no-gutters'}>
+          <Row>
+            {this.state.applications.map(application =>
+              <Col md={12} lg={6}>
+                <Card key={application.objectID} className="application" style={{ minWidth: 525, maxHeight: 175 }}>
+                  <a href={application.link} target={'_blank'} style={{ color: 'black' }}>
+                    <Container fluid={true} className={'no-gutters'}>
+                      <Row>
+                        <Col style={{ maxWidth: 175 }}>
+                          <Image src={application.image}/>
+                        </Col>
+                        <Col>
+                          <CardBody>
+                            <CardTitle><span dangerouslySetInnerHTML={{ __html: application.name }}/></CardTitle>
+                            <CardText>
+                              <span
+                                dangerouslySetInnerHTML={{ __html: `${application.category} #${application.rank}` }}/>
+                            </CardText>
+                          </CardBody>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </a>
+                </Card>
+              </Col>,
+            )}
+          </Row>
+        </Container>
       </div>
     );
   }
