@@ -6,6 +6,7 @@
     "algoliasearch": "^3.30.0",
     "algoliasearch-helper": "^2.26.1",
     "bootstrap": "4",
+    "create-inferno-context": "^0.2.4",
     "inferno": "^5.4.0",
     "inferno-bootstrap": "^5.1.4",
     "inferno-scripts": "6.3.2"

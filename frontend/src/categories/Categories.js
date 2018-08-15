@@ -1,9 +1,6 @@
-import {Component, linkEvent} from 'inferno';
-import Button from 'inferno-bootstrap/lib/Button';
-import Collapse from 'inferno-bootstrap/lib/Collapse';
-import ListGroup from 'inferno-bootstrap/lib/List/ListGroup';
-import ListGroupItem from 'inferno-bootstrap/lib/List/ListGroupItem';
+import {Component} from 'inferno';
 import helper from '../database/helper';
+import CategoriesContext from './CategoriesContext';
 
 class Categories extends Component {
   constructor(props, context) {
@@ -38,9 +35,9 @@ class Categories extends Component {
     return categoriesMap;
   }
 
-  toggleCategory(instance, event) {
+  toggleCategory = (event) => {
     const category = event.target.dataset.category;
-    instance.setState(({ selectedCategory: previousCategory }) => {
+    this.setState(({ selectedCategory: previousCategory }) => {
       const selectedCategory = previousCategory === category ? null : category;
       if (previousCategory) {
         helper.toggleFacetRefinement('category', previousCategory);
@@ -51,8 +48,8 @@ class Categories extends Component {
       helper.search();
       return { selectedCategory }
     });
-    instance.doToggle();
-  }
+    this.doToggle();
+  };
 
   doToggle = () => {
     this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
@@ -60,21 +57,18 @@ class Categories extends Component {
 
   render() {
     return (
-      <div className="categories">
-        <Button onClick={this.doToggle}>Display: {this.state.selectedCategory || 'All categories' }</Button>
-        <Collapse isOpen={this.state.isOpen}>
-            <ListGroup>
-            {Array.from(this.state.categoriesMap).map(([name]) => (
-              <ListGroupItem className={`justify-content-between ${name === this.state.selectedCategory ? 'active' : ''}`}
-                             key={name} data-category={name}
-                             style={{cursor: 'pointer'}}
-                             onClick={linkEvent(this, this.toggleCategory)}>
-                {name}
-              </ListGroupItem>
-            ))}
-            </ListGroup>
-        </Collapse>
-      </div>
+      <CategoriesContext.Provider
+        value={{
+          doToggle: this.doToggle,
+          isOpen: this.state.isOpen,
+          selectedCategory: this.state.selectedCategory,
+          toggleCategory: this.toggleCategory,
+          categoriesMap: this.state.categoriesMap
+        }}>
+        <div>
+          {this.props.children}
+        </div>
+      </CategoriesContext.Provider>
     );
   }
 }
