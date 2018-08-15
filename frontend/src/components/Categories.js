@@ -6,15 +6,31 @@ class Categories extends Component {
     super(props, context);
 
     this.state = {
-      categories: [],
+      categoriesMap: new Map(),
       selectedCategory: null,
     };
 
     helper.on('result', (content) => {
-      this.setState({
-        categories: content.getFacetValues('category', { sortBy: ['name:asc'] }),
+      this.setState(({categoriesMap}) => {
+        const updated = this.updateCategories(
+          categoriesMap,
+          content
+            .getFacetValues('category', { sortBy: ['name:asc'] })
+            .map(({ name, count }) => ({ name, count }))
+        );
+        return {categoriesMap: updated}
       });
     });
+  }
+
+  updateCategories(categoriesMap, newCategories) {
+    for (const name of categoriesMap.keys()) {
+      categoriesMap.set(name, 0);
+    }
+    newCategories.forEach(category => {
+      categoriesMap.set(category.name, category.count);
+    });
+    return categoriesMap;
   }
 
   toggleCategory(instance, event) {
@@ -31,9 +47,9 @@ class Categories extends Component {
   render() {
     return (
       <ul className="categories">
-        {this.state.categories.map(category => (
-          <li key={category.name} data-category={category.name}
-              onClick={linkEvent(this, this.toggleCategory)}>{category.name} ({category.count})</li>
+        {Array.from(this.state.categoriesMap).map(([name, count]) => (
+          <li key={name} data-category={name}
+              onClick={linkEvent(this, this.toggleCategory)}>{name} ({count})</li>
         ))}
       </ul>
     );
