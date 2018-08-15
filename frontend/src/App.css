@@ -6,6 +6,10 @@
   font-size: 1em;
 }
 
+.App .card-body {
+  padding: 0;
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;

@@ -18,7 +18,7 @@ export default class Image extends Component {
   render() {
     return (
       <img src={this.state.src} alt="not found"
-           width={175} height={175}
+           width={"100%"}
            onError={linkEvent(this, this.onImageError)} />
     );
   }

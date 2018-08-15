@@ -9,6 +9,10 @@ import Row from 'inferno-bootstrap/lib/Row';
 import helper from '../database/helper';
 import Image from './Image';
 
+function truncate(content) {
+  return content.length > 60 ? `${content.substr(0, 57)}...`: content
+}
+
 class Applications extends Component {
   constructor(props, context) {
     super(props, context);
@@ -30,17 +34,17 @@ class Applications extends Component {
         <Container fluid={true} className={'no-gutters'}>
           <Row>
             {this.state.applications.map(application =>
-              <Col md={12} lg={6}>
-                <Card key={application.objectID} className="application" style={{ minWidth: 525, maxHeight: 175 }}>
-                  <a href={application.link} target={'_blank'} style={{ color: 'black' }}>
+              <Col xs={12} md={12} lg={6}>
+                <Card key={application.objectID} className="application">
+                  <a href={application.link} style={{ color: 'black' }}>
                     <Container fluid={true} className={'no-gutters'}>
-                      <Row>
-                        <Col style={{ maxWidth: 175 }}>
+                      <Row className={'align-items-center'}>
+                        <Col xs={3}>
                           <Image src={application.image}/>
                         </Col>
                         <Col>
                           <CardBody>
-                            <CardTitle><span dangerouslySetInnerHTML={{ __html: application.name }}/></CardTitle>
+                            <CardTitle><span dangerouslySetInnerHTML={{ __html: truncate(application.name) }}/></CardTitle>
                             <CardText>
                               <span
                                 dangerouslySetInnerHTML={{ __html: `${application.category} #${application.rank}` }}/>

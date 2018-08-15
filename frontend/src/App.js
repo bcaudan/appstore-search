@@ -3,7 +3,6 @@ import './registerServiceWorker';
 import Col from 'inferno-bootstrap/lib/Col';
 import Container from 'inferno-bootstrap/lib/Container';
 import Row from 'inferno-bootstrap/lib/Row';
-import Categories from './components/Categories';
 import Search from './components/Search';
 import Sort from './components/Sort';
 import Applications from './components/Applications';
@@ -17,9 +16,6 @@ class App extends Component {
         <Container fluid={true} className={'no-gutters'}>
           <Row>
             <Col>
-              <Categories/>
-            </Col>
-            <Col xs={1}>
               <Sort/>
             </Col>
           </Row>
