@@ -1186,6 +1186,10 @@ boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
+bootstrap@4:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.3.tgz#0eb371af2c8448e8c210411d0cb824a6409a12be"
+
 boxen@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
@@ -1507,6 +1511,10 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.5, classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
 clean-css@4.1.x:
   version "4.1.11"
@@ -3371,6 +3379,32 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
+inferno-animation@^5.1.3:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/inferno-animation/-/inferno-animation-5.1.4.tgz#e7e1d3f5ae0e69af8154dbbe5a5d51b46e43473e"
+  dependencies:
+    inferno-create-element "^5.3.0"
+
+inferno-bootstrap@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/inferno-bootstrap/-/inferno-bootstrap-5.1.4.tgz#aa0b7e6aa0ea31977caa8b58d08eb9141da73750"
+  dependencies:
+    classnames "^2.2.6"
+    inferno "^5.3.0"
+    inferno-animation "^5.1.3"
+    inferno-create-element "^5.3.0"
+    inferno-popper "^5.1.0"
+    inferno-shared "^5.3.0"
+    inferno-vnode-flags "^5.3.0"
+    lodash.isfunction "^3.0.9"
+    lodash.isobject "^3.0.2"
+    lodash.tonumber "^4.0.3"
+    popper.js "^1.12.9"
+
+inferno-create-element@^5.3.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-5.4.0.tgz#a8653e89c6339a24d3419fece201dfd29fa32167"
+
 inferno-dev-utils@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/inferno-dev-utils/-/inferno-dev-utils-5.3.2.tgz#333c66e4084607557cf0434f16aff6105a75abc3"
@@ -3397,6 +3431,13 @@ inferno-dev-utils@^5.3.2:
 inferno-error-overlay@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/inferno-error-overlay/-/inferno-error-overlay-4.3.2.tgz#fc509713b879de83e25b5c086742fc4ebdbc418f"
+
+inferno-popper@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/inferno-popper/-/inferno-popper-5.1.0.tgz#d36c7d8365595d4826c63e1f748bcba5d8bd8387"
+  dependencies:
+    classnames "^2.2.5"
+    popper.js "^1.12.9"
 
 inferno-scripts@6.3.2:
   version "6.3.2"
@@ -3442,15 +3483,15 @@ inferno-scripts@6.3.2:
   optionalDependencies:
     fsevents "1.2.4"
 
-inferno-shared@5.4.0:
+inferno-shared@5.4.0, inferno-shared@^5.3.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-5.4.0.tgz#3b903983e253de91512fe825fac280da7818caa1"
 
-inferno-vnode-flags@5.4.0:
+inferno-vnode-flags@5.4.0, inferno-vnode-flags@^5.3.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-5.4.0.tgz#7fdcec06a945373c1ed591dd6822581dce501bce"
 
-inferno@^5.4.0:
+inferno@^5.3.0, inferno@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/inferno/-/inferno-5.4.0.tgz#e6e8e39628f3260af6046ffb56ff108da73cc596"
   dependencies:
@@ -4487,6 +4528,14 @@ lodash.defaults@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
 
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+
+lodash.isobject@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -4503,6 +4552,10 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.tonumber@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/lodash.tonumber/-/lodash.tonumber-4.0.3.tgz#0b96b31b35672793eb7f5a63ee791f1b9e9025d9"
 
 "lodash@>=3.5 <5", lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.10"
@@ -5342,6 +5395,10 @@ pluralize@^7.0.0:
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
+
+popper.js@^1.12.9:
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
 portfinder@^1.0.9:
   version "1.0.16"
