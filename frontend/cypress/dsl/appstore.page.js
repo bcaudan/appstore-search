@@ -13,6 +13,10 @@ export default class Page {
     return cy.get('.applications .application');
   }
 
+  getFirstApplicationName() {
+    return cy.get('.applications .application:first .card-title')
+  }
+
   search(candidate) {
     cy.get('.search input').type(candidate);
     this.waitApplicationsLoaded();
@@ -31,5 +35,13 @@ export default class Page {
     cy.get('.category').contains(name).click();
     cy.get('.category').should('not.be.visible');
     this.waitApplicationsLoaded();
+  }
+
+  getActivePage() {
+    return cy.get('.pagination .active')
+  }
+
+  goTo(page) {
+    cy.get('.pagination').contains(page).click()
   }
 }
