@@ -20,7 +20,7 @@
   padding-left: 0;
 }
 
-.result-controls {
+.result-controls, .pagination {
   margin: 0.3em;
 }
 

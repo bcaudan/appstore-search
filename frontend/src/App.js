@@ -7,6 +7,7 @@ import Categories from './categories/Categories';
 import CategoriesCollapse from './categories/CategoriesCollapse';
 import CategoriesToggle from './categories/CategoriesToggle';
 import Applications from './components/Applications';
+import ApplicationsPagination from './components/ApplicationsPagination';
 import Search from './components/Search';
 import Sort from './components/Sort';
 import './registerServiceWorker';
@@ -18,7 +19,7 @@ class App extends Component {
         <Search/>
         <Categories>
           <Container fluid={true} className={'no-gutters'}>
-            <Row  className={'result-controls'}>
+            <Row className={'result-controls'}>
               <Col xs={12}>
                 <div className={'float-left'}>
                   <CategoriesToggle/>
@@ -36,6 +37,7 @@ class App extends Component {
           </Container>
         </Categories>
         <Applications/>
+        <ApplicationsPagination/>
       </div>
     );
   }

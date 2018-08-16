@@ -42,4 +42,17 @@ context('Appstore search', () => {
       expect(application).to.contain(candidate)
     });
   });
+
+  it('should retrieve next page with pagination', () => {
+    let firstApplication;
+    page.getActivePage().should('contain', 1);
+    page.getFirstApplicationName().then(name => {
+      firstApplication = name.text();
+    });
+    page.goTo(2);
+    page.getActivePage().should('contain', 2);
+    page.getFirstApplicationName().then(name => {
+      expect(name.text()).not.to.equal(firstApplication);
+    });
+  });
 });
