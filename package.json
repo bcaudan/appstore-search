@@ -7,7 +7,7 @@
     "postinstall": "npm run install:frontend",
     "install:frontend": "cd frontend && npm install",
     "backend": "node backend/server.js",
-    "frontend": "cd frontend && npm run serve",
+    "frontend": "cd frontend && npm run build && npm run serve",
     "dev:backend": "nodemon backend/server.js",
     "dev:frontend": "cd frontend && npm run start",
     "test": "npm-run-all test:backend test:frontend",

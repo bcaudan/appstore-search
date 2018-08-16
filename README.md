@@ -13,6 +13,12 @@ https://bcaudan-appstore-search.herokuapp.com/
 
 ## Local
 
+### Getting started
+
+Requirements: node v10.8.0
+
+    npm install
+    
 ### Frontend
 
     npm run frontend
