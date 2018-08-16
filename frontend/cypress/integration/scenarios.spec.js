@@ -10,48 +10,48 @@ context('Appstore search', () => {
   });
 
   it('should display applications on load', () => {
-    page.getApplications()
+    page.applications()
         .its('length')
         .should('be.gt', 0)
   });
 
   it('should retrieve application based on search value', () => {
     const candidate = 'NYTimes';
-    page.getApplications().should('not.contain', candidate);
+    page.applications().should('not.contain', candidate);
     page.search(candidate);
-    page.getApplications().should('contain', candidate)
+    page.applications().should('contain', candidate)
   });
 
   it('should sort applications by rank', () => {
     const maxRank = 80;
     const minRank = 1;
-    page.getApplications().should('contain', `#${maxRank}`);
+    page.applications().should('contain', `#${maxRank}`);
     page.sort('asc');
-    page.getApplications().should('contain', `#${minRank}`);
+    page.applications().should('contain', `#${minRank}`);
     page.sort('desc');
-    page.getApplications().should('contain', `#${maxRank}`)
+    page.applications().should('contain', `#${maxRank}`)
   });
 
   it('should filter by category', () => {
     const candidate = 'Books';
     const otherCategory = 'News';
-    page.getApplications().should('contain', otherCategory);
+    page.applications().should('contain', otherCategory);
     page.selectCategory(candidate);
-    page.getApplications().should('not.contain', otherCategory);
-    page.getApplications().each(application => {
+    page.applications().should('not.contain', otherCategory);
+    page.applications().each(application => {
       expect(application).to.contain(candidate)
     });
   });
 
   it('should retrieve next page with pagination', () => {
     let firstApplication;
-    page.getActivePage().should('contain', 1);
-    page.getFirstApplicationName().then(name => {
+    page.activePage().should('contain', 1);
+    page.firstApplicationName().then(name => {
       firstApplication = name.text();
     });
-    page.goTo(2);
-    page.getActivePage().should('contain', 2);
-    page.getFirstApplicationName().then(name => {
+    page.goToPage(2);
+    page.activePage().should('contain', 2);
+    page.firstApplicationName().then(name => {
       expect(name.text()).not.to.equal(firstApplication);
     });
   });
