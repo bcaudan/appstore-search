@@ -4,7 +4,7 @@ import Container from 'inferno-bootstrap/lib/Container';
 import Row from 'inferno-bootstrap/lib/Row';
 import './App.css';
 import Applications from './components/Applications';
-import ApplicationsPagination from './components/ApplicationsPagination';
+import ApplicationsPagination from './components/pagination/ApplicationsPagination';
 import Categories from './components/categories/Categories';
 import CategoriesCollapse from './components/categories/CategoriesCollapse';
 import CategoriesToggle from './components/categories/CategoriesToggle';
