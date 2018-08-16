@@ -9,10 +9,6 @@ import Row from 'inferno-bootstrap/lib/Row';
 import helper from '../database/helper';
 import Image from './Image';
 
-function truncate(content) {
-  return content.length > 60 ? `${content.substr(0, 57)}...`: content
-}
-
 class Applications extends Component {
   constructor(props, context) {
     super(props, context);
@@ -44,7 +40,7 @@ class Applications extends Component {
                         </Col>
                         <Col>
                           <CardBody>
-                            <CardTitle><span dangerouslySetInnerHTML={{ __html: truncate(application.name) }}/></CardTitle>
+                            <CardTitle><span dangerouslySetInnerHTML={{ __html: truncate(application.name, 60) }}/></CardTitle>
                             <CardText>
                               <span
                                 dangerouslySetInnerHTML={{ __html: `${application.category} #${application.rank}` }}/>
@@ -62,6 +58,10 @@ class Applications extends Component {
       </div>
     );
   }
+}
+
+function truncate(content, length) {
+  return content.length > length ? `${content.substr(0, length - 3)}...`: content
 }
 
 export default Applications;

@@ -7,7 +7,7 @@ export default class CategoriesToggle extends Component {
     return (
         <CategoriesContext.Consumer>
           {({ doToggle, selectedCategory }) => (
-            <Button onClick={doToggle}>Display: {selectedCategory || 'All categories'}</Button>
+            <Button className={'category-toggle'} onClick={doToggle}>Display: {selectedCategory || 'All categories'}</Button>
           )}
         </CategoriesContext.Consumer>
     );

@@ -31,7 +31,7 @@ export default class Sort extends Component {
 
   render() {
     return (
-      <div>
+      <div className={'sort'}>
         <ButtonDropdown isOpen={this.state.isOpen} toggle={this.doToggle}>
           <DropdownToggle caret>Sort</DropdownToggle>
           <DropdownMenu className={"dropdown-menu-right"}>

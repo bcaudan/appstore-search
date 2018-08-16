@@ -12,7 +12,7 @@ export default class CategoriesToggle extends Component {
             <Collapse isOpen={isOpen}>
               <ListGroup>
                 {Array.from(categoriesMap).map(([name]) => (
-                  <ListGroupItem className={`justify-content-between ${name === selectedCategory ? 'active' : ''}`}
+                  <ListGroupItem className={`category justify-content-between ${name === selectedCategory ? 'active' : ''}`}
                                  key={name} data-category={name}
                                  style={{ cursor: 'pointer' }}
                                  onClick={toggleCategory}>
