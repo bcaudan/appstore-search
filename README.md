@@ -44,12 +44,13 @@ Launch server with automatic restart on changes:
 
 available on http://localhost:4000
 
-## References
-### Inferno
+## Tests
 
-- https://infernojs.org/
+### Frontend
 
-### Algolia javascript libraries
+    npm run test:frontend
 
-- [algolia/algoliasearch-client-js](https://github.com/algolia/algoliasearch-client-js) JavaScript API client
-- [algolia/algoliasearch-helper-js](https://community.algolia.com/algoliasearch-helper-js/) is a search state manager
+### Backend
+
+    npm run test:backend
+
