@@ -1,6 +1,6 @@
 import {Component, linkEvent} from 'inferno';
 
-const fallbackImage = './image-not-found.png';
+const FALLBACK_IMAGE = './image-not-found.png';
 
 export default class Image extends Component {
   constructor(props, context) {
@@ -8,12 +8,12 @@ export default class Image extends Component {
 
     this.state = {
       loaded: false,
-      src: props.src ? props.src : fallbackImage,
+      src: props.src ? props.src : FALLBACK_IMAGE,
     }
   }
 
   onImageError(instance) {
-    instance.setState({ src: fallbackImage })
+    instance.setState({ src: FALLBACK_IMAGE })
   }
 
   onImageLoaded(instance) {
@@ -31,6 +31,5 @@ export default class Image extends Component {
              onLoad={linkEvent(this, this.onImageLoaded)}/>
       </div>
     )
-
   }
 }
