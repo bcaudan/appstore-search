@@ -2,7 +2,9 @@ const DISPLAYED_PAGES = 5;
 
 export default function computePaginationState(nbPages, currentPage) {
   const currentOffset = Math.floor(currentPage / DISPLAYED_PAGES);
-  const offsetMax = Math.ceil(nbPages / DISPLAYED_PAGES) - 1;
+  const offsetMax = nbPages > 0
+    ? Math.ceil(nbPages / DISPLAYED_PAGES) - 1
+    : 0;
   return {
     currentPage,
     previous: computePageForPrevious(currentOffset),
