@@ -1,8 +1,9 @@
-import { Component } from 'inferno';
+import {Component} from 'inferno';
 import ButtonDropdown from 'inferno-bootstrap/lib/ButtonDropdown';
 import DropdownItem from 'inferno-bootstrap/lib/DropdownItem';
 import DropdownMenu from 'inferno-bootstrap/lib/DropdownMenu';
 import DropdownToggle from 'inferno-bootstrap/lib/DropdownToggle';
+import config from '../database/config';
 import helper from '../database/helper';
 
 export default class Sort extends Component {
@@ -11,14 +12,17 @@ export default class Sort extends Component {
 
     this.state = {
       sort: 'desc',
-      isOpen: false
+      isOpen: false,
     };
   }
 
   onSortChange = (event) => {
     const sort = event.target.dataset.sort;
     helper
-      .setIndex(sort === 'desc' ? 'appstore-search' : 'appstore-search-rank-asc')
+      .setIndex(sort === 'desc'
+        ? config.indexes.desc
+        : config.indexes.asc
+      )
       .search();
     this.setState({ sort });
   };
@@ -34,7 +38,7 @@ export default class Sort extends Component {
       <div className={'sort'}>
         <ButtonDropdown isOpen={this.state.isOpen} toggle={this.doToggle}>
           <DropdownToggle caret>Sort</DropdownToggle>
-          <DropdownMenu className={"dropdown-menu-right"}>
+          <DropdownMenu className={'dropdown-menu-right'}>
             <DropdownItem data-sort={'desc'} onClick={this.onSortChange}>Rank DESC</DropdownItem>
             <DropdownItem data-sort={'asc'} onClick={this.onSortChange}>Rank ASC</DropdownItem>
           </DropdownMenu>

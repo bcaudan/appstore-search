@@ -7,22 +7,23 @@ import CategoriesContext from './CategoriesContext';
 export default class CategoriesToggle extends Component {
   render() {
     return (
-        <CategoriesContext.Consumer>
-          {({ isOpen, categoriesMap, selectedCategory, toggleCategory }) => (
-            <Collapse isOpen={isOpen}>
-              <ListGroup>
-                {Array.from(categoriesMap).map(([name]) => (
-                  <ListGroupItem className={`category justify-content-between ${name === selectedCategory ? 'active' : ''}`}
-                                 key={name} data-category={name}
-                                 style={{ cursor: 'pointer' }}
-                                 onClick={toggleCategory}>
-                    {name}
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            </Collapse>
-          )}
-        </CategoriesContext.Consumer>
+      <CategoriesContext.Consumer>
+        {({ isOpen, categoriesMap, selectedCategory, toggleCategory }) => (
+          <Collapse isOpen={isOpen}>
+            <ListGroup>
+              {Array.from(categoriesMap).map(([name]) => (
+                <ListGroupItem
+                  className={`category justify-content-between ${name === selectedCategory ? 'active' : ''}`}
+                  key={name} data-category={name}
+                  style={{ cursor: 'pointer' }}
+                  onClick={toggleCategory}>
+                  {name}
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          </Collapse>
+        )}
+      </CategoriesContext.Consumer>
     );
   }
 }
