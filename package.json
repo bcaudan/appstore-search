@@ -4,14 +4,14 @@
   "description": "Appstore search",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm-run-all install:frontend build:frontend",
+    "postinstall": "npm run install:frontend",
     "install:frontend": "cd frontend && npm install",
-    "build:frontend": "cd frontend && npm run build",
     "backend": "node backend/server.js",
-    "frontend": "cd frontend &&  serve -s build",
+    "frontend": "cd frontend && npm run serve",
     "dev:backend": "nodemon backend/server.js",
     "dev:frontend": "cd frontend && npm run start",
-    "test": "npm-run-all test:backend",
+    "test": "npm-run-all test:backend test:frontend",
+    "test:frontend": "cd frontend && npm test",
     "test:backend": "NODE_ENV=TEST npm-run-all -r -p backend test:backend:run",
     "test:backend:run": "npm-run-all clear-index wait-test-server-up mocha",
     "mocha": "mocha --timeout 30000 backend/server.spec.js",
@@ -35,7 +35,6 @@
     "chakram": "1.5.0",
     "mocha": "5.2.0",
     "nodemon": "1.18.3",
-    "npm-run-all": "4.1.3",
-    "serve": "9.4.2"
+    "npm-run-all": "4.1.3"
   }
 }

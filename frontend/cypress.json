@@ -1,0 +1,8 @@
+{
+  "video": false,
+  "pluginsFile": false,
+  "supportFile": false,
+  "fixturesFolder": false,
+  "defaultCommandTimeout": 10000,
+  "projectId": "ups8d3"
+}
