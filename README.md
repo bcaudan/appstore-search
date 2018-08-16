@@ -8,11 +8,17 @@ https://bcaudan-appstore-search.herokuapp.com/
 
 ### Backend
 
-    POST https://bcaudan-appstore-search.herokuapp.com/api/1/apps {app}
-    DELETE https://bcaudan-appstore-search.herokuapp.com/api/1/apps/app-id
+    POST https://bcaudan-appstore-search-api.herokuapp.com/api/1/apps {app}
+    DELETE https://bcaudan-appstore-search-api.herokuapp.com/api/1/apps/app-id
 
 ## Local
 
+### Getting started
+
+Requirements: node v10.8.0
+
+    npm install
+    
 ### Frontend
 
     npm run frontend
@@ -44,12 +50,13 @@ Launch server with automatic restart on changes:
 
 available on http://localhost:4000
 
-## References
-### Inferno
+## Tests
 
-- https://infernojs.org/
+### Frontend
 
-### Algolia javascript libraries
+    npm run test:frontend
 
-- [algolia/algoliasearch-client-js](https://github.com/algolia/algoliasearch-client-js) JavaScript API client
-- [algolia/algoliasearch-helper-js](https://community.algolia.com/algoliasearch-helper-js/) is a search state manager
+### Backend
+
+    npm run test:backend
+

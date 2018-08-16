@@ -2,9 +2,8 @@ import {Component} from 'inferno';
 import Pagination from 'inferno-bootstrap/lib/Pagination';
 import PaginationItem from 'inferno-bootstrap/lib/PaginationItem';
 import PaginationLink from 'inferno-bootstrap/lib/PaginationLink';
-import helper from '../database/helper';
-
-const DISPLAYED_PAGES = 5;
+import helper from '../../database/helper';
+import computePaginationState from './computePaginationState';
 
 export default class ApplicationsPagination extends Component {
   constructor(props, context) {
@@ -18,24 +17,8 @@ export default class ApplicationsPagination extends Component {
     };
 
     helper.on('result', ({ nbPages, page }) => {
-      this.setState({
-        ...this.computePaginationElements(nbPages, page),
-        currentPage: page,
-      });
+      this.setState(computePaginationState(nbPages, page));
     });
-  }
-
-  computePaginationElements(nbPages, current) {
-    const displayedPages = [];
-    const offset = Math.floor(current / DISPLAYED_PAGES);
-    const lastPageOffset = Math.ceil(nbPages / DISPLAYED_PAGES) - 1;
-    const nbOfDisplayedPages = offset === lastPageOffset ? nbPages % DISPLAYED_PAGES : DISPLAYED_PAGES;
-    for (let i = 0; i < nbOfDisplayedPages; i++) {
-      displayedPages.push((offset * DISPLAYED_PAGES) + i);
-    }
-    const previous = offset > 0 ? (offset - 1) * DISPLAYED_PAGES : -1;
-    const next = offset < lastPageOffset ? (offset + 1) * DISPLAYED_PAGES : -1;
-    return { previous, displayedPages, next };
   }
 
   loadPage = (event) => {

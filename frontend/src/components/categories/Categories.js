@@ -1,8 +1,9 @@
 import {Component} from 'inferno';
-import helper from '../database/helper';
+import helper from '../../database/helper';
+import config from '../../database/config';
 import CategoriesContext from './CategoriesContext';
 
-class Categories extends Component {
+export default class Categories extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -17,7 +18,7 @@ class Categories extends Component {
         const updated = this.updateCategories(
           categoriesMap,
           content
-            .getFacetValues('category', { sortBy: ['name:asc'] })
+            .getFacetValues(config.facet, { sortBy: ['name:asc'] })
             .map(({ name, count }) => ({ name, count })),
         );
         return { categoriesMap: updated }
@@ -40,10 +41,10 @@ class Categories extends Component {
     this.setState(({ selectedCategory: previousCategory }) => {
       const selectedCategory = previousCategory === category ? null : category;
       if (previousCategory) {
-        helper.toggleFacetRefinement('category', previousCategory);
+        helper.toggleFacetRefinement(config.facet, previousCategory);
       }
       if (selectedCategory) {
-        helper.toggleFacetRefinement('category', selectedCategory);
+        helper.toggleFacetRefinement(config.facet, selectedCategory);
       }
       helper.search();
       return { selectedCategory }
@@ -63,7 +64,7 @@ class Categories extends Component {
           isOpen: this.state.isOpen,
           selectedCategory: this.state.selectedCategory,
           toggleCategory: this.toggleCategory,
-          categoriesMap: this.state.categoriesMap
+          categoriesMap: this.state.categoriesMap,
         }}>
         <div>
           {this.props.children}
@@ -72,5 +73,3 @@ class Categories extends Component {
     );
   }
 }
-
-export default Categories;

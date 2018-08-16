@@ -1,8 +1,8 @@
-import { Component, linkEvent } from 'inferno';
+import {Component, linkEvent} from 'inferno';
 import Input from 'inferno-bootstrap/lib/Form/Input'
 import helper from '../database/helper';
 
-class Search extends Component {
+export default class Search extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -31,7 +31,7 @@ class Search extends Component {
       <div className="search">
         <Input type="text" autoComplete="off" id="search-box"
                value={this.state.value}
-               className={"form-control-lg"}
+               className={'form-control-lg'}
                onInput={linkEvent(this, this.onSearchValueChange)}
                placeholder="Search for applications"
         />
@@ -39,5 +39,3 @@ class Search extends Component {
     );
   }
 }
-
-export default Search;

@@ -9,11 +9,11 @@ export default class Page {
     cy.get('.loading.visible').should('not.be.visible');
   }
 
-  getApplications() {
+  applications() {
     return cy.get('.applications .application');
   }
 
-  getFirstApplicationName() {
+  firstApplicationName() {
     return cy.get('.applications .application:first .card-title')
   }
 
@@ -37,11 +37,11 @@ export default class Page {
     this.waitApplicationsLoaded();
   }
 
-  getActivePage() {
+  activePage() {
     return cy.get('.pagination .active')
   }
 
-  goTo(page) {
+  goToPage(page) {
     cy.get('.pagination').contains(page).click()
   }
 }
