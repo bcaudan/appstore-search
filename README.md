@@ -8,8 +8,8 @@ https://bcaudan-appstore-search.herokuapp.com/
 
 ### Backend
 
-    POST https://bcaudan-appstore-search.herokuapp.com/api/1/apps {app}
-    DELETE https://bcaudan-appstore-search.herokuapp.com/api/1/apps/app-id
+    POST https://bcaudan-appstore-search-api.herokuapp.com/api/1/apps {app}
+    DELETE https://bcaudan-appstore-search-api.herokuapp.com/api/1/apps/app-id
 
 ## Local
 
